@@ -1,0 +1,16 @@
+<!-- 常见问题 -->
+<view class="commonWrap">
+<view class="topTitle">
+    常见问题
+</view>
+<view class="middlePart">
+  <view class="every-item" bindtap="goTuiKuan">
+    <text>售后退款</text>
+    <image src="../../../img/in_black.png"></image>
+  </view>
+</view>
+<!-- 按钮 -->
+   <view class="btnWrap">
+    <button class="sure-btn" bindtap="callPhone">联系客服</button>
+   </view>
+</view>

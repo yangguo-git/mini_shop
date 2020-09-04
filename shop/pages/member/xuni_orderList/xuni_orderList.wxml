@@ -1,0 +1,55 @@
+<!--pages/member/orderList/orderList.wxml-->
+<wxs module="formatStr" src="../../../filter/formatStr.wxs"></wxs>
+<view class="container greybg">
+	<!-- tab栏 -->
+	<view class="outer_tit_box">
+		<view class="list_tit">
+			<view wx:for="{{tabData}}" wx:key="{{idx}}" data-orderStatus="{{item.orderStatus}}" bindtap="changeTab">
+				<text class="{{orderStatus == item.orderStatus?'bottom_border':''}}">{{item.name}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="m-orderList" wx:if="{{isShow}}">
+		<block wx:for="{{orderList}}" wx:key="key" wx:for-item="item">
+			<view class="item2">
+				<view class="item_top">
+					<view class="productName">{{item.productName}}</view>
+					<view>
+					<text wx:if="{{item.orderStatus == '304'}}" class="od-status">成功</text>
+					<text wx:if="{{item.orderStatus == '301'}}" class="od-status">失败</text>
+					<text wx:if="{{item.orderStatus == '302'}}" class="od-status">受理中</text>
+
+					<!-- <text wx:if="{{item.orderStatus == '101'}}" class="od-status">待付款</text>
+					<text wx:if="{{item.orderStatus == '303'}}" class="od-status">待收货</text>
+					<text wx:if="{{item.orderStatus == '401'}}" class="od-status">处理中</text>
+					<text wx:if="{{item.orderStatus == '305'}}" class="od-status">已完成</text>
+					<text wx:if="{{item.orderStatus == '102'}}" class="od-status">已取消</text>
+					<text wx:if="{{item.orderStatus == '301'}}" class="od-status">待发货</text>
+					<text wx:if="{{item.orderStatus == '302'}}" class="od-status">已发货</text>
+					<text wx:if="{{item.orderStatus == '304'}}" class="od-status">已签收</text>
+					<text wx:if="{{item.orderStatus == '402'}}" class="od-status">已退款</text> -->
+					</view>
+				</view>
+				<view class="item_con">
+					<view class="item_order">
+						<view class="item_left">订单编号：</view>
+						<view>{{item.orderId}}</view>
+					</view>
+					<view class="item_time">
+						<view class="item_left">下单时间：</view>
+						<view>{{item.createTime}}</view>
+					</view>
+					<view class="item_money">
+						<view class="item_left">订单金额：</view>
+						<view>￥{{item.payFee/100}}元</view>
+					</view>
+						<!-- <button class="again_purchase" bindtap="againToPurchaseFn" >再次购买</button> -->
+				
+				</view>
+			</view>
+		</block>
+	</view>
+	<view class='buttom' wx:if="{{!isShow}}">
+		<text>暂无订单~</text>
+	</view>
+</view>
